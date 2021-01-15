@@ -1,4 +1,4 @@
-# blog
+# Blog - Vue JS
 Basic understanding of Vue js
 
 ## Project setup
