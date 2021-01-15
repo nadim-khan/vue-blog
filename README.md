@@ -1,4 +1,5 @@
 # blog
+Basic understanding of Vue js
 
 ## Project setup
 ```
