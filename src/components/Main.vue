@@ -59,8 +59,4 @@ export default {
         width:60%;
         
     }
-    tr{
-        display: flex;
-        justify-content: center;
-    }
 </style>
