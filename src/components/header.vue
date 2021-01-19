@@ -1,14 +1,36 @@
 <template>
-    <div class="header">
-        <ul>
-            <li><img alt="Vue logo" src="../assets/logo.png"></li>
-            <li><a class="active" href="#home">Home</a></li>
-            <li><a href="#news">News</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#about">About</a></li>
-            <li><button @click="updateTitle">Update Title</button></li>
-        </ul>
-        {{title}}
+    <div>
+        
+    <b-navbar toggleable="lg" type="dark" variant="secondary">
+        <b-navbar-brand tag="h1" class="mb-0">Vue Blog</b-navbar-brand>
+
+        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+        <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav>
+            <b-nav-item ><b-link to="home">Home</b-link></b-nav-item>
+            <b-nav-item ><b-link to="users">Users</b-link></b-nav-item>
+            <b-nav-item disabled>Disabled</b-nav-item>
+        </b-navbar-nav>
+
+        <!-- Right aligned nav items -->
+        <b-navbar-nav class="ml-auto">
+            <b-nav-form>
+            <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
+            <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
+            </b-nav-form>
+
+            <b-nav-item-dropdown right>
+            <!-- Using 'button-content' slot -->
+            <template #button-content>
+                <em>User</em>
+            </template>
+            <b-dropdown-item href="#">Profile</b-dropdown-item>
+            <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+            </b-nav-item-dropdown>
+        </b-navbar-nav>
+        </b-collapse>
+    </b-navbar>
     </div>
 </template>
 <script>
@@ -16,14 +38,11 @@
         name:'Header',
         data(){
             return{
-                title:"nadson"
+                
             }
         },
         methods:{
-            updateTitle() {
-                //  this.$emit('changeTitle','Hello vue JS');
-                this.title='xyz'
-             }
+           
         },
         created:function(){
             console.warn("Created called",this.title)
@@ -52,33 +71,7 @@
     }
 </script>
 <style scoped>
-    ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: #333;
-    
-    }
-
-    li {
-        float: left;
-    }
-
-    li a {
-        display: block;
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-    }
-    li img{
-        width:30px;
-        height:30px;
-        padding:5px;
-    }
-
-    li a:hover {
-        background-color: #111;
+    b-navbar{
+        background: red;
     }
 </style>

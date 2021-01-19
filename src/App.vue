@@ -1,34 +1,41 @@
 <template>
   <div id="app">
-    <Header v-if="showHeader"/>
-    <H1 >{{title}}</H1>
-    <Main msg="Main View Loaded" data="Nadeem"/>  
-     <button @click="hideIt">Show/hide Header</button>
+    <Login v-if="loginView"  @loginSuccess="loginStatus"/>
+    <Header v-if="!loginView" />
+    <MainView  v-if="!loginView"/>
+    
   </div>
    
     
 </template>
 
 <script>
-import Main from './components/Main.vue'
-import Header from './components/header'
+
+import Login from './components/Login';
+import Header from './components/Header';
+import MainView from './components/MainView'
 
 export default {
   name: 'App',
   components: {
-    Main,
-    Header
+    Login,
+    Header,
+    MainView
   },
   data() {
     return {
       title:'title',
-      showHeader:'true'
+      showHeader:'true',
+      loginView:true
     }
   },
   methods:{
     // updateTitle(title) {
     //   this.title = title;
     // }
+    loginStatus(data){
+      this.loginView = false;
+    },
     hideIt(){
       this.showHeader = !this.showHeader;
     }
