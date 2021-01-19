@@ -11,14 +11,16 @@
                     <tr>
                         <th>ID</th>
                         <th>NAME</th>
-                        <th>EMAIL</th>
+                        <th>AGE</th>
+                        <th>SALARY</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="user in users" :key="user.id">
                         <td>{{user.id}}</td>
-                        <td>{{user.name}}</td>
-                        <td>{{user.email}}</td>
+                        <td>{{user.employee_name}}</td>
+                        <td>{{user.employee_age}}</td>
+                        <td>{{user.employee_salary}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -29,17 +31,19 @@
     
 </template>
 <script>
+import * as Vue from 'vue';
+import * as VueAxios from 'vue-axios';
+import axios from 'axios';
+// Vue.use(VueAxios.axios)// bind axios
 export default {
     name:'Main',
     data(){
         return{
             showView: false,
-            users:[
-                {id:1, name:'Nadeem', email:'nadeem@test.com'},
-                {id:2, name:'Vivek', email:'Vivek@test.com'},
-                {id:3, name:'Sukant', email:'Sukant@test.com'},
-                {id:4, name:'Shyam', email:'Shyam@test.com'},
-            ]
+            users:[],
+            loading:true,
+            error:false,
+            errorDescription:''
         }
     },
     props:{
@@ -51,12 +55,32 @@ export default {
             this.showView = !this.showView
         }
     },
+    mounted(){
+        axios.get('http://dummy.restapiexample.com/api/v1/employees')
+        // https://api.coindesk.com/v1/bpi/currentprice.json
+        .then( resp => {
+            this.users=resp.data.data;
+        })
+        .catch(error=>{
+            this.errorDescription = 'Error in getting emplyee details - Contact IT department';
+        })
+        .finally(()=>{
+            this.loading = false
+        })
+    }
 }
 </script>
 
 <style scoped>
     table{
         width:60%;
-        
+    }
+    table tr {
+        display:flex;
+        justify-content: center;
+       
+    }
+    td,th{
+         width:20%;
     }
 </style>

@@ -8,16 +8,47 @@
             <li><a href="#about">About</a></li>
             <li><button @click="updateTitle">Update Title</button></li>
         </ul>
+        {{title}}
     </div>
 </template>
 <script>
     export default {
         name:'Header',
+        data(){
+            return{
+                title:"nadson"
+            }
+        },
         methods:{
             updateTitle() {
-                this.$emit('changeTitle','Hello vue JS');
-            }
-        }
+                //  this.$emit('changeTitle','Hello vue JS');
+                this.title='xyz'
+             }
+        },
+        created:function(){
+            console.warn("Created called",this.title)
+        },
+        beforeCreate: function(){
+            console.warn("Before Created called",this.title)
+        },
+        beforeMount:function(){
+            console.warn("beforeMount called",this.title)
+        },
+        mounted:function(){
+            console.warn("mounted called",this.title)
+        },
+        beforeUpdate:function(){
+            console.warn("beforeUpdate called",this.title)
+        },
+        updated:function(){
+            console.warn("updated called",this.title)
+        },
+        beforeDestroy:function(){
+            console.warn("beforeDestroy called",this.title)
+        },
+        destroyed() {
+            console.warn("destroyed called",this.title)
+        },
     }
 </script>
 <style scoped>
