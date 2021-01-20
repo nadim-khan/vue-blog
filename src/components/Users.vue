@@ -3,6 +3,7 @@
         <H2 align="center">Users page</H2>
         <b-table hover dark responsive  outlined sticky-header :items="usersList" :fields="fields" :busy="isBusy">
             <template #table-busy>
+                
                 <div class="text-center text-warning my-2">
                     <b-spinner class="align-middle"></b-spinner>
                     <strong>Loading...</strong>
