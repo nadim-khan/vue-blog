@@ -2,14 +2,14 @@
     <div>
         
     <b-navbar toggleable="lg" type="dark" variant="secondary">
-        <b-navbar-brand tag="h1" class="mb-0">Vue Blog</b-navbar-brand>
+        <b-navbar-brand tag="h1" class="mb-0" to="/">Vue Blog</b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
         <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-            <b-nav-item ><b-link to="home">Home</b-link></b-nav-item>
-            <b-nav-item ><b-link to="users">Users</b-link></b-nav-item>
+            <b-nav-item to="home">Home</b-nav-item>
+            <b-nav-item to="users">Users</b-nav-item>
             <b-nav-item disabled>Disabled</b-nav-item>
         </b-navbar-nav>
 
