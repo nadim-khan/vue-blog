@@ -10,6 +10,7 @@
         <b-navbar-nav>
             <b-nav-item to="home">Home</b-nav-item>
             <b-nav-item to="users">Users</b-nav-item>
+            <b-nav-item to="register">Register</b-nav-item>
             <b-nav-item disabled>Disabled</b-nav-item>
         </b-navbar-nav>
 

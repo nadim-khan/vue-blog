@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <Login v-if="loginView"  @loginSuccess="loginStatus"/>
-    <Header v-if="!loginView" />
-    <MainView  v-if="!loginView"/>
+    <Login v-if="loginView && !registerView"  @loginSuccess="loginStatus" @onregister="registerPage($event)"/>
+    <Register />
+    <Header v-if="!loginView && !registerView" />
+    <MainView  v-if="!loginView && !registerView"/>
     
   </div>
    
@@ -26,15 +27,22 @@ export default {
     return {
       title:'title',
       showHeader:'true',
-      loginView:true
+      loginView:true,
+      registerView:false
     }
   },
   methods:{
     // updateTitle(title) {
     //   this.title = title;
     // }
+    registerPage(val){
+      this.registerView = true;
+      this.loginView = false;
+      alert(val)
+    },
     loginStatus(data){
       this.loginView = false;
+      this.registerView = false;
     },
     hideIt(){
       this.showHeader = !this.showHeader;
@@ -47,5 +55,7 @@ export default {
 #app{
   margin:0px;
   padding:0;
+  background:#2b3e50;
+  height: 100vh;;
 }
 </style>

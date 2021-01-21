@@ -7,6 +7,7 @@ import VueRouter from 'vue-router'
 
 import Home from './components/Home';
 import Users from './components/Users';
+import Register from './components/Register';
 
 Vue.config.productionTip = false
 Vue.use(VueRouter);
@@ -15,6 +16,7 @@ const routes = [
   { path:'/',component :Home },
   { path:'/home',component :Home },
   { path:'/users',component :Users },
+  { path:'/register',component :Register },
 ];
 
 const router = new VueRouter(

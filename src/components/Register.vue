@@ -2,9 +2,21 @@
     <div class="login"> 
         <b-card>
             <b-card-text>
-              <h3>Login</h3>
                 <b-form @submit="onSubmit" @reset="onReset" v-if="show">
                     <b-form-group
+                        id="input-group-1"
+                        label="Name:"
+                        label-for="input-1"
+                    >
+                    <b-form-input
+                    id="input-1"
+                    v-model="form.email"
+                    type="text"
+                    placeholder="Enter Name"
+                    required
+                    ></b-form-input>
+                </b-form-group>
+                <b-form-group
                         id="input-group-1"
                         label="Email address:"
                         label-for="input-1"
@@ -18,18 +30,23 @@
                     required
                     ></b-form-input>
                 </b-form-group>
-
-                <b-form-group id="input-group-2" label="Password:" label-for="input-2">
-                    <b-form-input
-                    id="input-2"
-                    v-model="form.password"
-                    placeholder="Enter password"
+                <b-form-group id="input-group-3" label="Status:" label-for="input-3">
+                    <b-form-select
+                    id="input-3"
+                    v-model="form.status"
+                    :options="status"
                     required
-                    ></b-form-input>
+                    ></b-form-select>
                 </b-form-group>
-                <!-- <b-form-group>
-                  <b-link @click="registration">Register Here !</b-link>
-                </b-form-group> -->
+
+                <b-form-group id="input-group-3" label="Gender:" label-for="input-3">
+                    <b-form-select
+                    id="input-3"
+                    v-model="form.gender"
+                    :options="gender"
+                    required
+                    ></b-form-select>
+                </b-form-group>
                 <b-button type="submit" variant="primary">Submit</b-button>
                 <b-button type="reset" variant="danger">Reset</b-button>
             </b-form>
@@ -40,13 +57,17 @@
 
 <script>
   export default {
-      name:'Login',
+      name:'Register',
     data() {
       return {
         form: {
           email: '',
-          password: ''
+          password: '',
+          status:null,
+          gender:null
         },
+        status: [{ text: 'Select Status', value: null }, 'Active', 'Inactive', 'Busy', 'New Joiner'],
+        gender: [{ text: 'Select Gender', value: null }, 'Male', 'Female', 'Other'],
         show: true
       }
     },
@@ -68,9 +89,6 @@
         this.$nextTick(() => {
           this.show = true
         })
-      },
-      registration(){
-        this.$emit('onregister','true')
       }
     }
   }
@@ -80,6 +98,5 @@
     .login{
         display: flex;
         justify-content: center;
-        padding-top:10%;
     }
 </style>>
